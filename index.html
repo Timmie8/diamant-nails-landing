@@ -1,508 +1,84 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diamant Nails – Webshop C–Z</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamant Nails - Officiële Webshop</title>
+    <style>
+        /* Basis instellingen */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fcf8f9; /* Zacht roze/witte achtergrond */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
 
-  <!-- Basis styling: strak, modern, opvallend -->
-  <style>
-    :root {
-      --primary: #e6007e;
-      --primary-dark: #b00060;
-      --accent: #ffd700;
-      --bg: #050509;
-      --bg-soft: #11111a;
-      --text: #f7f7f7;
-      --muted: #b3b3c2;
-      --card: #181824;
-      --radius: 14px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
-      --shadow-strong: 0 24px 70px rgba(0, 0, 0, 0.8);
-    }
+        /* Container voor de inhoud */
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, sans-serif;
-    }
+        h1 {
+            color: #d4a373; /* Goud-achtige kleur voor een luxe uitstraling */
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
 
-    body {
-      background: radial-gradient(circle at top, #1b1024 0, #050509 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+        /* De opvallende knop */
+        .btn-shop {
+            display: inline-block;
+            background-color: #d4a373;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+        }
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 18px 48px;
-    }
+        /* Effect als je over de knop hovert */
+        .btn-shop:hover {
+            background-color: #bc8a5f;
+            transform: scale(1.05);
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .brand-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .brand-sub {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .header-cta a {
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #1a1020;
-      font-weight: 600;
-      font-size: 0.9rem;
-      box-shadow: var(--shadow-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-    }
-
-    .header-cta a span.icon {
-      font-size: 1.1rem;
-    }
-
-    .header-cta a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: var(--shadow-strong);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 26px;
-      align-items: center;
-      margin-bottom: 34px;
-    }
-
-    @media (max-width: 820px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .hero-text h1 {
-      font-size: clamp(2.1rem, 3vw, 2.7rem);
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-
-    .hero-text h1 span.highlight {
-      background: linear-gradient(135deg, var(--accent), var(--primary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-text p {
-      color: var(--muted);
-      font-size: 0.98rem;
-      max-width: 520px;
-      margin-bottom: 18px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .badge {
-      font-size: 0.75rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(10, 10, 20, 0.7);
-      backdrop-filter: blur(10px);
-      color: var(--muted);
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      padding: 11px 22px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #1a1020;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      box-shadow: var(--shadow-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: var(--shadow-strong);
-    }
-
-    .btn-ghost {
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-side {
-      background: radial-gradient(circle at top left, #3b2348 0, #181824 45%, #050509 100%);
-      border-radius: var(--radius);
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-side::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.18), transparent 55%);
-      pointer-events: none;
-    }
-
-    .hero-side-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-side-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .hero-side-chip {
-      font-size: 0.75rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--accent);
-    }
-
-    .hero-side-main {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 12px;
-    }
-
-    .hero-side-main h2 {
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-
-    .hero-side-main p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-
-    .pill {
-      font-size: 0.75rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--muted);
-    }
-
-    .hero-side-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-side-footer strong {
-      color: var(--accent);
-      font-size: 0.9rem;
-    }
-
-    .sections {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      gap: 22px;
-    }
-
-    @media (max-width: 900px) {
-      .sections {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .card h2 {
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .list {
-      list-style: none;
-      margin-top: 6px;
-    }
-
-    .list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.86rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .list li span.bullet {
-      margin-top: 3px;
-      font-size: 0.7rem;
-      color: var(--accent);
-    }
-
-    .cta-block {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px dashed rgba(255, 255, 255, 0.18);
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .cta-block a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    footer {
-      margin-top: auto;
-      padding: 14px 18px 22px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    footer a {
-      color: var(--accent);
-    }
-  </style>
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-  <div class="page">
-    <!-- HEADER -->
-    <header>
-      <div class="brand">
-        <div class="brand-title">Diamant Nails</div>
-        <div class="brand-sub">Professionele nagelproducten – Webshop C–Z</div>
-      </div>
-      <div class="header-cta">
-        <a href="https://www.diamant-nails.nl/webshop-c-z" target="_blank" rel="noopener noreferrer">
-          <span class="icon">✨</span>
-          <span>Ga direct naar de webshop</span>
-        </a>
-      </div>
-    </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1>
-          Ontdek de <span class="highlight">Diamant Nails</span> webshop C–Z
-        </h1>
-        <p>
-          Eén overzichtelijke startpagina om bezoekers direct door te sturen naar de
-          <strong>officiële Diamant Nails webshop (C–Z)</strong>. Modern, helder en volledig gericht op conversie.
-        </p>
+    <div class="container">
+        <h1>Diamant Nails</h1>
+        <p>Ontdek onze exclusieve collectie in de webshop. Voor de perfecte nagels en professionele producten.</p>
+        
+        <a href="https://www.diamant-nails.nl/webshop-c-z" class="btn-shop">BEZOEK DE WEBSHOP</a>
 
-        <div class="hero-badges">
-          <span class="badge">✔ Professionele nagelproducten</span>
-          <span class="badge">✔ Directe doorlink naar webshop</span>
-          <span class="badge">✔ Ideaal voor GitHub Pages</span>
+        <div class="footer">
+            © 2024 Diamant Nails - Altijd de beste kwaliteit
         </div>
+    </div>
 
-        <div class="hero-cta">
-          <a class="btn-primary" href="https://www.diamant-nails.nl/webshop-c-z" target="_blank" rel="noopener noreferrer">
-            Naar Diamant Nails C–Z
-            <span>➜</span>
-          </a>
-          <button class="btn-ghost" type="button" onclick="window.open('https://www.diamant-nails.nl/webshop-c-z','_blank')">
-            Bekijk volledige collectie
-          </button>
-        </div>
-      </div>
-
-      <aside class="hero-side">
-        <div class="hero-side-header">
-          <div class="hero-side-title">Snelle toegang</div>
-          <div class="hero-side-chip">Webshop C–Z</div>
-        </div>
-        <div class="hero-side-main">
-          <h2>Direct naar de juiste categorie</h2>
-          <p>
-            Deze pagina fungeert als een stijlvolle landingspagina die bezoekers
-            meteen doorstuurt naar de juiste sectie van de Diamant Nails webshop.
-          </p>
-          <div class="pill-row">
-            <span class="pill">C–Z productoverzicht</span>
-            <span class="pill">Professionele kwaliteit</span>
-            <span class="pill">Gebruiksvriendelijke webshop</span>
-          </div>
-        </div>
-        <div class="hero-side-footer">
-          <span>Bestemming: <strong>diamant-nails.nl/webshop-c-z</strong></span>
-          <span>Live klikbaar ➜</span>
-        </div>
-      </aside>
-    </section>
-
-    <!-- CONTENT SECTIONS -->
-    <section class="sections">
-      <article class="card">
-        <h2>Waarom deze GitHub‑pagina?</h2>
-        <p>
-          Deze pagina is ontworpen om er op GitHub Pages <strong>modern, strak en professioneel</strong> uit te zien,
-          terwijl de focus volledig ligt op één ding: bezoekers zo snel mogelijk naar
-          de <strong>Diamant Nails webshop C–Z</strong> sturen.
-        </p>
-        <ul class="list">
-          <li>
-            <span class="bullet">•</span>
-            <span><strong>Visueel opvallend:</strong> donkere achtergrond met luxe accentkleuren (roze / goud).</span>
-          </li>
-          <li>
-            <span class="bullet">•</span>
-            <span><strong>Conversiegericht:</strong> meerdere duidelijke knoppen die direct naar de webshop linken.</span>
-          </li>
-          <li>
-            <span class="bullet">•</span>
-            <span><strong>Responsief:</strong> werkt netjes op desktop, tablet en mobiel.</span>
-          </li>
-        </ul>
-
-        <div class="cta-block">
-          Bezoek nu de officiële webshop:
-          <br />
-          <a href="https://www.diamant-nails.nl/webshop-c-z" target="_blank" rel="noopener noreferrer">
-            https://www.diamant-nails.nl/webshop-c-z
-          </a>
-        </div>
-      </article>
-
-      <aside class="card">
-        <h2>Directe doorlinken</h2>
-        <p>
-          Alle belangrijke knoppen op deze pagina sturen de bezoeker direct door naar:
-        </p>
-        <p>
-          <strong>https://www.diamant-nails.nl/webshop-c-z</strong>
-        </p>
-        <ul class="list">
-          <li>
-            <span class="bullet">•</span>
-            <span>Hoofdknop in de header.</span>
-          </li>
-          <li>
-            <span class="bullet">•</span>
-            <span>Grote call‑to‑action in de hero sectie.</span>
-          </li>
-          <li>
-            <span class="bullet">•</span>
-            <span>Tekstlink in de informatiekaart.</span>
-          </li>
-        </ul>
-        <div class="cta-block">
-          Tip: plaats dit bestand als <code>index.html</code> in je GitHub‑repo en activeer GitHub Pages
-          voor een directe, deelbare landingspagina.
-        </div>
-      </aside>
-    </section>
-  </div>
-
-  <footer>
-    Gemaakt voor een professionele presentatie van
-    <a href="https://www.diamant-nails.nl/webshop-c-z" target="_blank" rel="noopener noreferrer">
-      Diamant Nails – Webshop C–Z
-    </a>
-    .
-  </footer>
 </body>
 </html>
